@@ -10,3 +10,11 @@ int main() {
     
     return 0;
 }
+
+/* 
+Tamanho de int: 4 bytes
+Tamanho de long int: 4 bytes
+Tamanho de long long int: 8 bytes
+Tamanho de double: 8 bytes
+Tamanho de long double: 16 bytes 
+*/
