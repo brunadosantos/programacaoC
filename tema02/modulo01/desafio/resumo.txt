@@ -1,0 +1,223 @@
+
+#include <stdio.h>
+#include <string.h> // possibilita utilizar a função strcspn na retirada do caractere de nova linha (\n) em fgets.
+
+// Desafio Super Trunfo - Países
+// Tema 1 - Cadastro das Cartas
+// Este código inicial serve como base para o desenvolvimento do sistema de cadastro de cartas de cidades.
+// Siga os comentários para implementar cada parte do desafio.
+
+// DECLARAÇÃO DE FUNÇÕES
+int cadastroCarta1();
+int cadastroCarta2();
+int exibicaoCarta1();
+int exibicaoCarta2();
+float calculoDensidadePibCarta1();
+float calculoDensidadePibCarta2();
+double calculoSuperPoderCarta1();
+double calculoSuperPoderCarta2();
+
+// DEFINIÇÃO DE VARIÁVEIS
+int carta1, carta2;
+
+char estado[30];
+char codigo[30];
+char cidade[30];
+
+unsigned long int populacaoCarta1, populacaoCarta2;
+float areaCarta1, areaCarta2;
+float pibCarta1, pibCarta2;
+int pontoTuristicoCarta1, pontoTuristicoCarta2;
+float densidadePopulacionalCarta1, densidadePopulacionalCarta2;
+float inversoDensidadeCarta1, inversoDensidadeCarta2;
+float pibPerCapitaCarta1, pibPerCapitaCarta2;
+float superPoderCarta1, superPoderCarta2;
+
+int main() {
+
+    // CADASTRO DE CARTAS 1
+    cadastroCarta1(carta1); // chama a função para cadastrar os dados da carta 1
+
+    // CÁLCULO DA DENSIDADE POPULACIONAL E PIB PER CAPITA CARTAS 1
+    calculoDensidadePibCarta1(carta1); // chama a função para calcular a densidade populacional e o PIB per capita da carta 1
+    calculoSuperPoderCarta1(carta1); // chama a função para calcular o super poder da carta 1
+
+    // EXIBIÇÃO DOS DADOS DA CARTA 1
+    exibicaoCarta1(carta1); // chama a função para exibir os dados da carta 1
+
+    // CADASTRO DE CARTAS 2
+    cadastroCarta2(carta2); // chama a função para cadastrar os dados da carta 2
+
+    // CALCULO DENSIDADE PIB E SUPER PODER
+    calculoDensidadePibCarta2(carta2); // chama a função para calcular a densidade populacional e o PIB per capita da carta 2
+    calculoSuperPoderCarta2(carta2); // chama a função para calcular o super poder da carta 2
+
+    // EXIBIÇÃO DOS DADOS DA CARTA 2
+    exibicaoCarta2(carta2); // chama a função para exibir os dados da carta 2
+
+    // COMPARAÇÃO DAS CARTAS  
+    printf("----- EXIBIÇÃO DA COMPARAÇÃO DAS CARTAS ------\n");
+    printf("Caso retorne [1] significa que carta 1 venceu \n");
+    printf("Caso retorne [0] significa que carta 2 venceu \n");
+    printf("------------------------------------------------");
+
+    printf("\n");
+    printf("População (carta1 > carta2): %d\n", populacaoCarta1 > populacaoCarta2);
+    printf("\n");
+    printf("Área (carta1 > carta2): %d\n", (int) areaCarta1 > (int) areaCarta2);
+    printf("\n");
+    printf("PIB (carta1 > carta2): %d\n", (int) pibCarta1 > (int) pibCarta2);
+    printf("\n");
+    printf("Ponto Turistico (carta1 >  carta2): %d\n", pontoTuristicoCarta1 > pontoTuristicoCarta2);
+    printf("\n");
+    printf("Densidade Populacional (carta1 <= carta2): %d\n", (int) inversoDensidadeCarta1 <= (int) inversoDensidadeCarta2);
+    printf("\n");
+    printf("Pib per capita (carta1 > carta2): %d\n", (int) pibPerCapitaCarta1 > (int) pibPerCapitaCarta2);
+    printf("\n");
+    printf("Super Poder (carta1 > carta2): %d\n", (int) superPoderCarta1 > (int) superPoderCarta2);
+    printf("\n");
+
+    printf("\n"); // Pula uma linha para ajudar na leitura e separação dos dados no terminal
+
+    return 0;
+}
+
+// DEFINIÇÃO DAS FUNÇÕES
+int cadastroCarta1(){ // cadastra os dados da carta 1
+
+    // printf -> Solicita ao usuário que insira os dados necessários. Exemplo: "estado, cidade, população..."
+    // scanf -> Le e armazena os dados em memória.
+    // fgets -> Permite ler strings com espaços em branco. Exemplo:"Minas Gerais, São Paulo...". 
+    // strcspn -> Remove o caractere de nova linha (\n) que fgets pode incluir na string.
+    // fgetc -> Evita problemas de buffer do scanf consumindo o caractere de nova linha (\n).
+
+    printf("---- CADASTRO CARTA 1 ----\n");
+
+    printf("Digite o nome do estado: ");
+    fgets(estado, 50, stdin);
+    estado[strcspn(estado, "\n")] = 0; // 
+
+    printf("Digite o código da carta: ");
+    scanf("%s", codigo);
+    fgetc(stdin);
+
+    printf("Digite o nome da cidade: "); 
+    fgets(cidade, 50, stdin);
+    cidade[strcspn(cidade, "\n")] = 0;
+
+    printf("Digite a população total: ");
+    scanf("%lu", &populacaoCarta1);
+
+    printf("Digite a área em km²: ");
+    scanf("%f", &areaCarta1);
+
+    printf("Digite o pib da cidade: ");
+    scanf("%f", &pibCarta1);
+
+    printf("Digite o número de pontos turísticos: ");
+    scanf("%d", &pontoTuristicoCarta1);
+    fgetc(stdin);
+    
+    printf("\n");
+}
+
+int cadastroCarta2() { // cadastra os dados da carta 2
+
+    // printf -> Solicita ao usuário que insira os dados necessários. Exemplo: "estado, cidade, população..."
+    // scanf -> Le e armazena os dados em memória.
+    // fgets -> Permite ler strings com espaços em branco. Exemplo:"Minas Gerais, São Paulo...". 
+    // strcspn -> Remove o caractere de nova linha (\n) que fgets pode incluir na string.
+    // fgetc -> Evita problemas de buffer do scanf consumindo o caractere de nova linha (\n).
+
+    printf("---- CADASTRO CARTA 2 ----\n");
+
+    printf("Digite o nome do estado: ");
+    fgets(estado, 50, stdin);
+    estado[strcspn(estado, "\n")] = 0; // 
+
+    printf("Digite o código da carta: ");
+    scanf("%s", codigo);
+    fgetc(stdin);
+
+    printf("Digite o nome da cidade: "); 
+    fgets(cidade, 50, stdin);
+    cidade[strcspn(cidade, "\n")] = 0;
+
+    printf("Digite a população total: ");
+    scanf("%lu", &populacaoCarta2);
+
+    printf("Digite a área em km²: ");
+    scanf("%f", &areaCarta2);
+
+    printf("Digite o pib da cidade: ");
+    scanf("%f", &pibCarta2);
+
+    printf("Digite o número de pontos turísticos: ");
+    scanf("%d", &pontoTuristicoCarta2);
+    fgetc(stdin);
+
+    printf("\n");
+}
+
+int exibicaoCarta1(){ // exibe os dados da carta 1
+
+    // printf -> Responsável por exibir os dados armazenados em memória e digitados pelo usuário no terminal.
+
+    printf("---- EXIBIÇÃO CARTA 1 ----\n");
+    printf("Estado: %s\n", estado);
+    printf("Código: %s\n", codigo);
+    printf("Cidade: %s\n", cidade);
+    printf("Populacao: %lu\n", populacaoCarta1);
+    printf("Área: %.2f km²\n", areaCarta1);
+    printf("PIB: R$ %.2f bilhões\n", pibCarta1);
+    printf("Pontos Turísticos: %d\n", pontoTuristicoCarta1);
+    printf("Densidade Populacional: %.2f hab/km²\n", densidadePopulacionalCarta1);
+    printf("PIB per capita: R$ %.2f \n", pibPerCapitaCarta1);
+    printf("\n");
+}
+
+int exibicaoCarta2(){ // exibe os dados da carta 2
+
+    // printf -> Responsável por exibir os dados armazenados em memória e digitados pelo usuário no terminal.
+
+    printf("---- EXIBIÇÃO CARTA 2 ----\n");
+    printf("Estado: %s\n", estado);
+    printf("Código: %s\n", codigo);
+    printf("Cidade: %s\n", cidade);
+    printf("Populacao: %lu\n", populacaoCarta2);
+    printf("Área: %.2f km²\n", areaCarta2);
+    printf("PIB: R$ %.2f bilhões\n", pibCarta2);
+    printf("Pontos Turísticos: %d\n", pontoTuristicoCarta2);
+    printf("Densidade Populacional: %.2f hab/km²\n", densidadePopulacionalCarta2);
+    printf("PIB per capita: R$ %.2f \n", pibPerCapitaCarta2);
+    printf("\n");
+}
+
+float calculoDensidadePibCarta1() { // calcula a densidade populacional e pib per capita da carta 1
+
+    // Calcula a quantidade de habitantes por km²
+    // Calcula a renda média por pessoa em uma região.
+    // utiliza casting (float) para realizar a conversão explicita da variável populacao
+
+    densidadePopulacionalCarta1 = (float) populacaoCarta1 / areaCarta1;
+    pibPerCapitaCarta1 = (float) populacaoCarta1 / pibCarta1;
+}
+
+float calculoDensidadePibCarta2() { // calcula a densidade populacional e pib per capita da carta 2
+
+    // Calcula a quantidade de habitantes por km²
+    // Calcula a renda média por pessoa em uma região.
+    // utiliza casting (float) para realizar a conversão explicita da variável populacao
+
+    densidadePopulacionalCarta2 = (float) populacaoCarta2 / areaCarta2;
+    pibPerCapitaCarta2 = (float) populacaoCarta2 / pibCarta2;
+}
+
+double calculoSuperPoderCarta1(){ // calcula o super poder da carta 1
+    inversoDensidadeCarta1 = 1 / densidadePopulacionalCarta1;
+    superPoderCarta1 = populacaoCarta1 + areaCarta1 + pibCarta1 + pontoTuristicoCarta1 + pibPerCapitaCarta1 + inversoDensidadeCarta1;
+}
+double calculoSuperPoderCarta2(){ // calcula o super poder da carta 2
+    inversoDensidadeCarta2 = 1 / densidadePopulacionalCarta2;
+    superPoderCarta2 = populacaoCarta2 + areaCarta2 + pibCarta2 + pontoTuristicoCarta2 + pibPerCapitaCarta2 + inversoDensidadeCarta2;
+}
